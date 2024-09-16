@@ -10,29 +10,27 @@ import { User } from '../../types/IUser';
 import { RootState } from '../../store';
 import moment from 'moment';
 
-
-
 const UserList: React.FC = () => {
   const dispatch = useDispatch();
   const { users, total } = useSelector((state: RootState) => state.users);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<any>(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState<User | null>(null);
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
+  const [searchTerm, setSearchTerm] = useState<string>(''); 
 
-
-
+ 
   const fetchUsers = async () => {
     try {
-      const response = await api.get(`/users?page=${currentPage}&limit=${pageSize}`);
+      const response = await api.get(`/users?page=${currentPage}&limit=${pageSize}&filter=${searchTerm}`);
       const data = response.data;
-
+  
       if (Array.isArray(data.users)) {
-        dispatch(setUsers(data.users));
-        dispatch(setTotalUsers(data.total));
+        dispatch(setUsers(data.users)); 
+        dispatch(setTotalUsers(data.total)); 
       } else {
         console.error('Expected an array but got:', data.users);
       }
@@ -41,18 +39,20 @@ const UserList: React.FC = () => {
     }
   };
 
-  const totalPages = Math.ceil(total / pageSize);
-
+ 
   useEffect(() => {
-
     fetchUsers();
-  }, [dispatch, currentPage, pageSize]);
+  }, [currentPage, pageSize, searchTerm]);
 
+ 
+  const handleSearch = (value: string) => {
+    setSearchTerm(value); 
+    setCurrentPage(1); 
+  };
 
   const handleAddUser = () => {
     navigate('/user');
   };
-
 
   const handleDeleteUser = async () => {
     if (selectedUser) {
@@ -67,7 +67,6 @@ const UserList: React.FC = () => {
       }
     }
   };
-
 
   const handleEditUser = (user: User) => {
     const { password, ...userWithoutPassword } = user;
@@ -95,8 +94,6 @@ const UserList: React.FC = () => {
     setUserDetails(null);
   };
 
-
-
   const columns = [
     {
       title: 'Nome',
@@ -122,6 +119,7 @@ const UserList: React.FC = () => {
         <Input.Search
           placeholder="Pesquisar usuário"
           style={{ width: 200 }}
+          onSearch={handleSearch} 
         />
         <Button className='buttonRegister' onClick={handleAddUser}> +  Cadastrar Usuário</Button>
       </div>
@@ -165,6 +163,7 @@ const UserList: React.FC = () => {
           </div>
         )}
       </Drawer>
+
       {users.length === 0 ? (
         <div className="noData">
           <p>Nenhum usuário registrado</p>
@@ -184,21 +183,19 @@ const UserList: React.FC = () => {
               onChange: (page, pageSize) => {
                 setCurrentPage(page);
                 setPageSize(pageSize);
-                fetchUsers();
               },
             }}
             style={{ width: '100%' }}
-
           />
         </div>
       )}
+
       <Modal
         open={isModalOpen}
         onOk={handleDeleteUser}
         onCancel={handleCancel}
         okText="Sim"
         cancelText="Não"
-
         footer={[
           <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <Button key="cancel" onClick={handleCancel} style={{ marginRight: '8px' }}>

@@ -1,0 +1,129 @@
+.userListContainer {
+    padding: 24px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.noData {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.noData p {
+    margin: 0;
+}
+
+.ant-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.ant-list-item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+
+th.ant-table-cell {
+    background-color: #0D1931 !important;
+    color: white !important;
+    border-radius: 0 !important;
+    height: 10px !important;
+    font-size: 12px;
+    padding: 10px !important;
+
+}
+
+th.ant-table-cell:first-child {
+    border-top-left-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+}
+
+th.ant-table-cell:last-child {
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+    border-right: none !important;
+
+}
+
+.ant-table-cell-actions {
+    text-align: right !important;
+}
+
+.buttonRegister {
+    background-color: #00AAC1;
+    color: white;
+}
+
+
+td.ant-table-cell {
+    top: 15px !important;
+    padding: 10px !important;
+
+}
+
+td.ant-table-cell:first-child,
+td.ant-table-cell:last-child {
+
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+    border-right: none !important;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+
+}
+
+.user-info, .details-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 12px; 
+    margin-bottom: 12px;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column; 
+}
+
+.drawer-label {
+    font-weight: bold;
+    margin-bottom: 4px; 
+}
+
+
+.ant-pagination, .ant-table-pagination{
+    position: relative;
+    top: 15px !important;
+    
+}
+
+.ant-pagination-item ,.ant-pagination-item-1 ,.ant-pagination-item-active{
+    background-color: #00AAC1 !important;
+    
+}
+
+
+.ant-pagination .ant-pagination-item-active a {
+
+    color: white !important ;
+
+}
+
+.buttonContainer {
+    display: flex;    
+    justify-content: flex-end;
+}
+
+
+
+.buttonRegister {
+    background-color:#0290A4 !important ;
+}

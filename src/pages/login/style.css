@@ -1,0 +1,66 @@
+.loginPage {
+    display: flex;
+    height: 100vh;
+    background-color: #0D1931;
+  }
+  
+  .imageContainer {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    margin: auto 0 ;
+    margin-left: 5%;
+  }
+  
+  .formContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loginCard {
+    width: 400px; 
+    padding: 10px; 
+  }
+  
+  h1 {
+    text-align: left;
+    margin-bottom: 10px;
+    color:#0290A4 ;
+    font-size: 40px;
+  }
+  
+  h2 {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+  
+
+  p{
+    text-align: center;
+    color: #0290A4;
+  }
+  .ant-input, .ant-input-password {
+    border-radius: 5px;
+  }
+  
+ 
+  @media (max-width: 768px) {
+    .loginCard {
+      width: 300px; 
+      padding: 30px; 
+    }
+  
+   
+  }
+  
+  @media (max-width: 480px) {
+    .loginCard {
+      width: 100%; 
+      padding: 20px; 
+    }
+  
+   
+  }

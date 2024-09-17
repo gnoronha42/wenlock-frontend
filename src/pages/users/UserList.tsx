@@ -166,8 +166,8 @@ const UserList: React.FC = () => {
 
       {users.length === 0 ? (
         <div className="noData">
-          <p>Nenhum usuário registrado</p>
-          <p>Clique em cadastrar usuário para começar a cadastrar</p>
+          <p style={{fontSize:"20px"}} >Nenhum usuário registrado</p>
+          <p>Clique em "Cadastrar usuário" para começar a cadastrar</p>
         </div>
       ) : (
         <div>
